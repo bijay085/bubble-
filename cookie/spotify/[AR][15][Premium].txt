@@ -1,0 +1,35 @@
+#PLAN = Premium
+#COUNTRY = AR
+#AutoPay = True
+#DaysLeft: 15
+#-----------------------
+﻿.spotify.com	TRUE	/	TRUE	1763961310	sp_t	23570175-6b5c-4d97-ac0b-5c94d6d19f0a
+.spotify.com	TRUE	/	TRUE	1763949865	sp_adid	01160e22-809d-497e-bb02-ab8af6796e61
+.spotify.com	TRUE	/	FALSE	1749738941	_scid	a5dd1cf5-8968-4f65-bfd1-e22d98bcea83
+.spotify.com	TRUE	/	FALSE	1749716244	_cs_c	0
+.spotify.com	TRUE	/	FALSE	1749248245	_tt_enable_cookie	1
+.spotify.com	TRUE	/	FALSE	1749248245	_ttp	dyWayAnm8eVtPkgG7rxMV2HwUkJ
+accounts.spotify.com	FALSE	/	TRUE	1759183316	__Host-device_id	AQCLzq92OsnrQ5E9SUxjG-dT-dHRe4WWBH0lYpSfr21UG3kzI_QVYz9TpFeDur5i4Uc9pNLr_HoPcEVgP7iPjaWqUidR6i2tJ5o
+.spotify.com	TRUE	/	TRUE	1756159327	sp_dc	AQB2sR2F1NJQUfZRUmSUFHaPEBHW5FxZcVEnSjsye2H9Rzrxla0NMSCQe6tRl_lUTjrIfqORmYQPPJKUGzz2l7lvp0nRutFP-h5WCiasm-DW7KLsjOBLIzN-P1mNceQVB9jVAtkuSM0KWaDwnWsa287KqX5hfmK_iyffBgezCav9ICc_nkPxQ1-m6G7r7sYOMad1TVdmKrFyTVw5Qjvrw8Q8cnVD
+.spotify.com	TRUE	/	TRUE	1756159327	sp_key	cabeb132-8b39-4169-8123-1a08bf81c82c
+.spotify.com	TRUE	/	TRUE	1736470387	sp_gaid	0088fc8495ade076a2d4385581465d40e0bda99c46226574aa640a
+.spotify.com	TRUE	/	FALSE	1739062389	_gcl_au	1.1.520996651.1731286389
+.spotify.com	TRUE	/	FALSE	1763381585	OptanonAlertBoxClosed	2024-11-17T12:13:05.389Z
+.spotify.com	TRUE	/	TRUE	1737330718	sp_last_utm	%7B%22utm_campaign%22%3A%22your_account%22%2C%22utm_medium%22%3A%22menu%22%2C%22utm_source%22%3A%22spotify%22%7D
+.spotify.com	TRUE	/	FALSE	1732751443	_ScCbts	%5B%5D
+.spotify.com	TRUE	/	FALSE	1766333343	_sctr	1%7C1732071600000
+www.spotify.com	FALSE	/	TRUE	1763683192	ravelinDeviceId	rjs-0c772123-83cb-4ffa-b1d4-232033087770
+.spotify.com	TRUE	/	FALSE	1766333552	_scid_r	Ff6l3Rz1iWhvZUvR4i2YvOqDYVgx6KE5rRWl8Q
+.spotify.com	TRUE	/	FALSE	1749716244	_cs_id	b597d007-2eb3-a68a-f394-80359baf64fc.1715552244.3.1732146854.1732146643.1729682452.1749716244240.1
+.spotify.com	TRUE	/	TRUE	1766706855	sp_m	us
+.spotify.com	TRUE	/	FALSE	1766707192	_ga_S35RN5WNT2	GS1.1.1732146642.3.1.1732147192.0.0.0
+.spotify.com	TRUE	/	FALSE	1766986013	_ga	GA1.2.519517727.1715552244
+.spotify.com	TRUE	/	FALSE	1763949865	OptanonConsent	isGpcEnabled=0&datestamp=Sat+Nov+23+2024+23%3A04%3A25+GMT-0300+(hora+est%C3%A1ndar+de+Argentina)&version=202409.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&landingPath=NotLandingPage&groups=s00%3A1%2Cf00%3A1%2Cm00%3A1%2Ct00%3A1%2Ci00%3A1%2Cf11%3A1%2Cm03%3A1&AwaitingReconsent=false&geolocation=AR%3BC
+open.spotify.com	FALSE	/	FALSE	1763950337	muxData	mux_viewer_id=c3fb4063-ad35-4131-8e88-6e20307d547a&msn=0.3055619736948003&sid=1ac7a0eb-3962-460a-9678-1312b5b351d9&sst=1732414282371&sex=1732415837287
+.spotify.com	TRUE	/	FALSE	1766986013	_ga_BMC5VGR8YS	GS1.2.1732425241.10.1.1732426013.21.0.0
+.spotify.com	TRUE	/	FALSE	1766986738	_ga_ZWG1NSHWD8	GS1.1.1732425228.12.1.1732426738.0.0.0
+#===============
+#Checker by : Flamemodparadise/Phoenix
+#Discord server link  : https://discord.gg/T6Agt2qR or https://discord.gg/fmpofficial
+#Join Server for netflix, prime, spotify, gpt cookies
+#=====================

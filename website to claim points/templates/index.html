@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Points Form</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Resetting default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            padding: 45px 35px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeInContainer 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            margin-top: 140px; /* Adjusted margin-top */
+        }
+
+        @keyframes fadeInContainer {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #fff;
+            margin-top: 0; /* Adjusted margin-top */
+            margin-bottom: 30px;
+            position: relative;
+            animation: zoomIn 0.8s ease-in-out;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center form content vertically */
+            flex-grow: 1; /* Allow form to grow and fill the container */
+        }
+
+        .input-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px; /* Added margin-bottom for spacing */
+        }
+
+        .input-container i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px 53px 15px 50px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input[type="text"] {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input[type="text"]:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        input[type="text"]:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.02);
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px; /* Adjusted margin-bottom */
+            max-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #96c93d, #00b09b);
+        }
+
+        input[type="submit"]:active {
+            background: linear-gradient(135deg, #00a389, #86b833);
+            transform: scale(0.98);
+        }
+
+        /* Button Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.5s, opacity 1s;
+        }
+
+        .ripple:active::after {
+            transform: scale(2);
+            opacity: 1;
+            transition: 0s;
+        }
+
+        /* Spinner */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Result and Error Messages */
+        #result, .error {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0;
+            display: none; /* Hide by default */
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
+        }
+
+        #result.show, .error.show {
+            display: flex; /* Show when needed */
+            animation: fadeInUp 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error i,
+        #result i {
+            margin-right: 8px;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        #result {
+            color: #28a745;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* Decorative Circles */
+        .circle1,
+        .circle2 {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle1 {
+            width: 150px;
+            height: 150px;
+            top: -60px;
+            right: -60px;
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Footer Information */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            text-align: right;
+            font-size: 14px;
+            color: #c9f3de;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .footer a {
+            color: #d82d2d;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .footer a i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .footer a:hover {
+            color: #b542eb;
+            transform: translateX(-10px);
+        }
+
+        /* Adjust body to prevent overflow */
+        body {
+            padding-bottom: 100px; /* Height of the footer */
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px;
+            border-radius: 4px;
+            color: #fff;
+            white-space: nowrap;
+            font-size: 12px;
+            opacity: 0;
+            animation: fadeInTooltip 0.3s forwards;
+        }
+
+        @keyframes fadeInTooltip {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin-top: 60px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            input[type="text"],
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 12px 45px 12px 40px;
+            }
+            .footer {
+                text-align: center;
+                position: static;
+                margin-top: 20px;
+                align-items: center;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+            }
+            .container {
+                background: rgba(255, 255, 255, 0.05);
+            }
+            input[type="text"] {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            input[type="text"]:focus {
+                background: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            }
+            .input-container i {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            .footer a {
+                color: #4ecef5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <h1>Enter Discord User ID</h1>
+        <form id="pointsForm">
+            <div class="input-container tooltip" data-tooltip="Your unique Discord User ID">
+                <i class="fas fa-user"></i>
+                <input type="text" id="discord_id" name="discord_id" placeholder="Enter your Discord User ID" required>
+            </div>
+            <input type="submit" value="Submit" class="ripple">
+            <div class="error" id="error">
+                <i class="fas fa-exclamation-circle"></i><span id="errorMessage"></span>
+            </div>
+            <div id="spinner" class="spinner"></div>
+            <div id="result">
+                <i class="fas fa-check-circle"></i><span id="resultMessage"></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer moved outside the container -->
+    <div class="footer">
+        <p>Author : Phoenix (FMP)</p>
+        <a href="https://discord.com/channels/1275128475090554981/1275853845875916870" target="_blank"><i class="fas fa-robot"></i>Bot Direct Channel Link</a>
+        <a href="https://discord.gg/wJTV5E8DFp" target="_blank"><i class="fas fa-server"></i>Server Link</a>
+    </div>
+
+    <script>
+        // Prevent non-numeric input and enforce minimum length
+        const discordIdInput = document.getElementById('discord_id');
+        const errorDiv = document.getElementById('error');
+        const errorMessage = document.getElementById('errorMessage');
+        const submitButton = document.querySelector('input[type="submit"]');
+        const resultDiv = document.getElementById('result');
+        const resultMessage = document.getElementById('resultMessage');
+        const spinner = document.getElementById('spinner');
+
+        discordIdInput.addEventListener('input', function () {
+            // Remove any non-digit characters
+            this.value = this.value.replace(/\D/g, '');
+
+            // Real-time validation
+            if (this.value.length >= 10) {
+                errorMessage.textContent = '';
+                errorDiv.classList.remove('show');
+                errorDiv.style.display = 'none'; // Hide the error icon and message
+                this.style.borderColor = '#28a745';
+            } else {
+                errorMessage.textContent = 'ID must be at least 10 digits.';
+                errorDiv.classList.add('show');
+                errorDiv.style.display = 'flex'; // Show the error icon and message
+                this.style.borderColor = '#ff6b6b';
+            }
+        });
+
+        document.getElementById('pointsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            errorMessage.textContent = ''; // Clear previous error message
+            errorDiv.classList.remove('show');
+            errorDiv.style.display = 'none'; // Ensure error is hidden
+            resultMessage.textContent = '';
+            resultDiv.classList.remove('show');
+
+            const discordId = discordIdInput.value.trim();
+
+            if (discordId.length < 10) {
+                errorMessage.textContent = 'Oops! Discord User ID must be at least 10 digits.';
+                errorDiv.classList.add('show');
+                errorDiv.style.display = 'flex';
+                return;
+            }
+
+            const data = { discord_id: discordId };
+
+            // Disable button and show spinner
+            submitButton.disabled = true;
+            submitButton.value = 'Submitting...';
+            spinner.style.display = 'block';
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                submitButton.disabled = false;
+                submitButton.value = 'Submit';
+                spinner.style.display = 'none';
+
+                let message = result.message;
+                if (result.cooldown_time_hours > 0) {
+                    message += `<br>Please wait. You can submit again after ${result.cooldown_time_hours.toFixed(2)} hours.`;
+                }
+                message += `<br>Your total points: ${result.total_points}`;
+
+                // Display the result message
+                resultMessage.innerHTML = message;
+                resultDiv.classList.add('show');
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+
+                // Close the tab after 5 seconds
+                setTimeout(function() {
+                    window.close();
+                }, 5000); // 5 seconds
+            })
+            .catch(error => {
+                submitButton.disabled = false;
+                submitButton.value = 'Submit';
+                spinner.style.display = 'none';
+                errorMessage.textContent = error.message || 'An unexpected error occurred.';
+                errorDiv.classList.add('show');
+                errorDiv.style.display = 'flex';
+                errorDiv.scrollIntoView({ behavior: 'smooth' });
+                console.error('Error:', error);
+            });
+        });
+
+        // Placeholder prompt for user-friendliness
+        discordIdInput.addEventListener('focus', function () {
+            this.placeholder = "e.g., 123456789012345678";
+        });
+        discordIdInput.addEventListener('blur', function () {
+            this.placeholder = "Enter your Discord User ID";
+        });
+    </script>
+</body>
+</html>
